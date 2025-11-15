@@ -1,13 +1,13 @@
 [
   {
-    "id": "sokkie-basic",
-    "name": "Basic Sokkie Step",
+    "id": "sokkie-basic-spin",
+    "name": "Basic Spin",
     "danceType": "Sokkie",
     "difficulty": "Beginner",
-    "category": "Basics",
-    "description": "Step side-to-side with a lively rhythm, perfect for SA social events.",
+    "category": "Turns",
+    "description": "A simple, smooth single spin where the leader raises the follower’s hand to guide a controlled turn while maintaining forward momentum. One of the most common and essential turns in Sokkie.",
     "media": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmV3cHZvNWM5aWhuNDlwdG8yaWpvMnhtbTBxOGlmY21qNnUzYnczOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dZElRZ9vwsKIhbg2Zj/giphy.mp4",  
-    "tips": "Relax your hips and follow the beat!"
+    "tips": "Leaders: lift the hand just enough for clearance and keep the turn gentle. Followers: keep your core engaged and finish the spin facing your partner."
   },
   {
     "id": "sokkie-cuddle",
@@ -20,13 +20,13 @@
     "tips": "Maintain gentle frame and don’t over-rotate the wrap; keep it relaxed and controlled."
   },
   {
-    "id": "twostep-basic",
-    "name": "Basic TwoStep",
-    "danceType": "TwoStep",
-    "difficulty": "Beginner",
-    "category": "Basics",
-    "description": "Quick-quick-slow-slow pattern, common in South African line dances.",
-    "media": "https://www.youtube.com/watch?v=TIaQ5rlpOww",  
-    "tips": "Keep steps small in crowded venues."
-  }
+    "id": "sokkie-tornado",
+    "name": "Tornado",
+    "danceType": "Sokkie",
+    "difficulty": "Intermediate",
+    "category": "Turns",
+    "description": "A fast rotational move where the leader guides the follower into a tight series of spins while maintaining smooth travelling momentum. Common in energetic Sokkie socials and used to add flair during quick songs.",
+    "media": "https://res.cloudinary.com/ddrwt3rgn/video/upload/v1763248246/tornado_k509ke.mp4",
+    "tips": "Keep your travelling line steady and frame relaxed. Leaders should signal early; followers should keep steps small to stay balanced during the spin."
+}
 ]
