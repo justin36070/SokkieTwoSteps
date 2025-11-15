@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SokkieTwoStep.com - South African Dance Moves</title>
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
+
+    <!-- Bootstrap + Icons -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/firebase-ui-auth.css" rel="stylesheet">
+
+    <!-- Scripts (jQuery first, then Bootstrap, then custom) -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+</head>
+<body>
+    <!-- Navigation (adapted from provided) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">SokkieTwoStep.com</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Sokkie Moves</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">TwoStep Moves</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Favorites (Login Required)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                </ul>
+                <form class="d-flex ms-auto">
+                    <input class="form-control me-2" type="search" placeholder="Search Moves" id="searchInput">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Filters Section -->
+    <div class="container mt-4">
+        <h2>Filter Moves</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <select class="form-select" id="danceTypeFilter">
+                    <option>All</option>
+                    <option>Sokkie</option>
+                    <option>TwoStep</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select" id="difficultyFilter">
+                    <option>All</option>
+                    <option>Beginner</option>
+                    <option>Intermediate</option>
+                    <option>Advanced</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select" id="categoryFilter">
+                    <option>All</option>
+                    <option>Basics</option>
+                    <option>Turns</option>
+                    <option>Dips</option>
+                    <!-- Add more categories -->
+                </select>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" id="applyFilters">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Moves List -->
+    <div class="container mt-4">
+        <h2 id="moveTitle">Loading...</h2>
+        <div id="moveMedia" class="dance-media"></div>  <!-- GIF/Video here -->
+        <p id="moveDescription"></p>
+        <p id="moveTips"></p>
+        <a href="index.html" class="btn btn-secondary">Back to List</a>
+    </div>
+
+    <!-- Login Modal (using Firebase UI) -->
+    <div class="modal fade" id="loginModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="firebaseui-auth-container"></div>  <!-- Firebase UI here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center py-3 mt-4">
+        <p>&copy; 2025 SokkieTwoStep.com - Learn South African Dances!</p>
+    </footer>
+</body>
+</html>

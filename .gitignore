@@ -1,0 +1,14 @@
+# VS Code settings
+.vscode/
+
+# macOS junk
+.DS_Store
+
+# Windows junk
+Thumbs.db
+
+# Netlify local stuff (if you ever use it)
+.netlify/
+
+
+./nodemodules/
