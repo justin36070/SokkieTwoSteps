@@ -11,4 +11,4 @@ Thumbs.db
 .netlify/
 
 
-./nodemodules/
+.nodemodules/

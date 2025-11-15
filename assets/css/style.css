@@ -838,3 +838,14 @@ body { background: #f0f0f0; color: #333; font-family: Arial, sans-serif; }
 .navbar { background: #006400; }  /* Dark green for SA theme */
 .btn-primary { background: #FFD700; color: #000; }  /* Gold for SA flag */
 /* Add media queries for responsiveness as in provided CSS */
+/* Fix search bar squeezing the button */
+#searchInput {
+    flex: 1 1 auto;      /* takes available space */
+    width: auto !important;   /* overrides Bootstrap's width:100% */
+    min-width: 150px;    /* prevents it getting too tiny on mobile */
+}
+
+/* Optional: make the button a bit bigger and always visible */
+#searchInput ~ .btn {
+    white-space: nowrap;
+}
