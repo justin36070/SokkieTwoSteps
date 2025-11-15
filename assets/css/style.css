@@ -848,4 +848,15 @@ body { background: #f0f0f0; color: #333; font-family: Arial, sans-serif; }
 /* Optional: make the button a bit bigger and always visible */
 #searchInput ~ .btn {
     white-space: nowrap;
+  }
+
+  /* GIF speed controller – only shows on details page */
+.gif-speed-control {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+}
+.gif-speed-control input[type="range"] {
+    width: 200px;
 }

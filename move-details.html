@@ -3,37 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Move Details</title>
+    <title>Move Details - SokkieTwoSteps</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <style>
+        .video-container { max-width: 800px; margin: 2rem auto; }
+        .gif-speed-control { margin-top: 1rem; text-align: center; }
+    </style>
 </head>
 <body class="bg-light">
-    <div class="container py-5">
-        <div id="moveContent" class="text-center"></div>
-        <a href="index.html" class="btn btn-secondary mt-4">← Back to all moves</a>
+<div class="container py-5">
+    <div id="moveContent" class="text-center">
+        <div class="spinner-border text-primary" role="status"></div>
     </div>
+    <div class="text-center mt-4">
+        <a href="index.html" class="btn btn-secondary btn-lg">Back to all moves</a>
+    </div>
+</div>
 
-    <script>
-        const params = new URLSearchParams(location.search);
-        const id = params.get('id');
-        if (id) {
-            $.getJSON("data/moves.json", moves => {
-                const move = moves.find(m => m.id === id);
-                if (move) {
-                    const media = move.media.includes("youtube")
-                        ? `<iframe width="100%" height="400" src="${move.media}" frameborder="0" allowfullscreen></iframe>`
-                        : `<img src="${move.media}" class="img-fluid rounded">`;
-                    $("#moveContent").html(`
-                        <h1>${move.name}</h1>
-                        <p class="lead"><strong>${move.danceType}</strong> • ${move.difficulty} • ${move.category}</p>
-                        ${media}
-                        <p class="mt-4 fs-4">${move.description}</p>
-                        <p class="text-muted"><em>Tip: ${move.tips}</em></p>
-                    `);
-                }
-            });
-        }
-    </script>
+<script>
+$(document).ready(function () {
+    const urlParams = new URLSearchParams(location.search);
+    const id = urlParams.get('id');
+    if (!id) { $("#moveContent").html("<h2>No move selected</h2>"); return; }
+
+    $.getJSON("data/moves.json", function(moves) {
+        const move = moves.find(m => m.id === id);
+        if (!move) { $("#moveContent").html("<h2>Move not found</h2>"); return; }
+
+        const mediaHtml = `
+            <video id="danceVideo" class="img-fluid rounded shadow" loop muted playsinline preload="auto" style="max-width:100%; max-height:600px;">
+                <source src="${move.media}" type="video/mp4">
+                Your browser does not support video.
+            </video>
+            <div class="gif-speed-control">
+                <label>Speed: <span id="speedValue">1.0</span>x</label><br>
+                <input type="range" min="0.2" max="3" step="0.1" value="1" id="speedSlider" style="width:250px;">
+            </div>
+        `;
+
+        $("#moveContent").html(`
+            <h1 class="mb-3">${move.name}</h1>
+            <p class="lead text-muted mb-4">
+                <strong>${move.danceType}</strong> • ${move.difficulty} • ${move.category}
+            </p>
+            <div class="video-container">${mediaHtml}</div>
+            <p class="mt-5 fs-4">${move.description}</p>
+            <p class="text-success fs-4"><em>Tip: ${move.tips}</em></p>
+        `);
+
+        const video = document.getElementById('danceVideo');
+        video.play();
+
+        $("#speedSlider").on("input", function () {
+            const speed = parseFloat(this.value);
+            $("#speedValue").text(speed.toFixed(1));
+            video.playbackRate = speed;
+        });
+    });
+});
+</script>
 </body>
 </html>

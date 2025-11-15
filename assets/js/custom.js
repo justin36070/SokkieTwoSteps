@@ -39,10 +39,25 @@ function displayMoves(moves) {
     }
 
     moves.forEach(move => {
-        const isVideo = move.media.includes("youtube");
-        const mediaHtml = isVideo
-            ? `<iframe src="${move.media}" frameborder="0" allowfullscreen></iframe>`
-            : `<img src="${move.media}" alt="${move.name}" style="max-width:100%; border-radius:8px;">`;
+        // Detect if it's a video (MP4 or YouTube) or old GIF
+        const isMP4 = move.media.includes(".mp4");
+        const isYouTube = move.media.includes("youtube");
+
+        let mediaHtml = "";
+
+        if (isYouTube) {
+            mediaHtml = `<iframe src="${move.media}" frameborder="0" allowfullscreen></iframe>`;
+        } else if (isMP4) {
+            // Small looping video preview on the main page
+            mediaHtml = `
+                <video class="img-fluid rounded" loop muted playsinline preload="metadata" style="max-height:250px; width:100%; object-fit:cover;">
+                    <source src="${move.media}" type="video/mp4">
+                </video>
+            `;
+        } else {
+            // Fallback for old GIF links
+            mediaHtml = `<img src="${move.media}" alt="${move.name}" class="img-fluid rounded" style="max-height:250px;">`;
+        }
 
         const card = `
             <div class="col-md-6 col-lg-4 mb-4">
@@ -52,15 +67,19 @@ function displayMoves(moves) {
                     </div>
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">${move.name}</h5>
-                        <p class="card-text"><strong>${move.danceType}</strong> • ${move.difficulty} • ${move.category}</p>
+                        <p class="card-text"><strong>${move.danceType}</strong> • ${move.difficulty}</p>
                         <p class="card-text flex-grow-1">${move.description}</p>
                         <p class="text-muted small"><em>${move.tips}</em></p>
-                        <a href="move-details.html?id=${move.id}" class="btn btn-primary mt-auto">View Details</a>
+                        <a href="move-details.html?id=${move.id}" class="btn btn-primary mt-auto">View Details →</a>
                     </div>
                 </div>
             </div>`;
         container.append(card);
     });
+
+    // Auto-play videos on hover (optional but looks amazing)
+    $(".card video").on("mouseenter", e => e.target.play());
+    $(".card video").on("mouseleave", e => e.target.pause());
 }
 
 function filterMoves() {
